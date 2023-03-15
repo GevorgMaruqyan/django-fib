@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -18,9 +18,10 @@ def fibonachi(request):
             n1, n2 = n2, n1 + n2
             if n1 > int(number):
                 res = 'no fib'
+                return render(request, 'main/fibonachi.html', context={'res':'no fib'})
+            
         res = ' '.join([i for i in r])
-    
-        
+            
     else:
         res = 'no fib'
     return render(request, 'main/fibonachi.html', context={'res':res})
